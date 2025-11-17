@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Step 1: Declare and initialize the array
+    double sales[] = {12.25, 32.50, 16.90, 23.00, 45.68};
+    int size = 5;
+    double sum = 0, average = 0;
+
+    cout << "Sales values: ";
+    for (int i = 0; i < size; i++) {
+        cout << sales[i] << " ";
+        sum += sales[i];
+    }
+
+    average = sum / size;
+    cout << "\nAverage sales: " << average << endl;
+
+    return 0;
+}
+
+
+Sales values: 12.25 32.5 16.9 23 45.68 
+Average sales: 26.866
+
+Step 2: Modify the Initialization
+
+If you change your array to only three values like this:
+
+double sales[5] = {12.25, 32.50, 16.90};
+
+The last two elements will automatically be set to 0.0 because they are uninitialized numeric elements in a fixed-size array.
+
+Step 3: Observe What Happens if You Specify a Smaller Size
+
+If you write something like:
+
+double sales[3] = {12.25, 32.50, 16.90, 23.00, 45.68};
+
+This will cause a compilation error, because there are more initial values than the declared size. C++ requires that the number of elements doesn’t exceed the array’s declared capacity.
+
+1. What values are assigned to the uninitialized elements?
+When you declare an array with a fixed size but provide fewer values, C++ automatically fills the remaining elements with zero (0 or 0.0).
+For example, if you declare an array of size 5 but only assign 3 values, the last two elements become 0.0 by default.
+
+2. What happens if you specify a size smaller than the number of initial values?
+If you declare a smaller size than the number of values you’re trying to assign, the program won’t compile. C++ will show an “excess elements in array initializer” error. This happens because the array doesn’t have enough space to store all the values you listed.
